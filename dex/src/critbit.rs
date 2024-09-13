@@ -303,6 +303,17 @@ impl Slab {
     }
 
     #[inline]
+    pub fn new_check(bytes: &[u8]) -> &Self {
+        let len_without_header = bytes.len().checked_sub(SLAB_HEADER_LEN).unwrap();
+        let slop = len_without_header % size_of::<AnyNode>();
+        let truncated_len = bytes.len() - slop;
+        let bytes = &bytes[..truncated_len];
+        let slab: &Self = unsafe { &*(bytes as *const [u8] as *const Slab) };
+        slab.check_size_align(); // check alignment
+        slab
+    }
+
+    #[inline]
     pub fn assert_minimum_capacity(&self, capacity: u32) -> DexResult {
         if self.nodes().len() <= (capacity as usize) * 2 {
             Err(DexErrorCode::SlabTooSmall)?
