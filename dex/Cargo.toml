@@ -17,9 +17,9 @@ no-entrypoint = []
 
 [dependencies]
 anchor-lang = "=0.29.0"
-solana-program = "1.10.41"
+solana-program = "<1.17.0"
 solana-security-txt = "1.0.2"
-spl-token = { version = "3.5.0", features = ["no-entrypoint"] }
+spl-token = { version = "=4.0.0", features = ["no-entrypoint"] }
 serde = "1.0.150"
 itertools = "0.10.5"
 without-alloc = "0.2.2"
@@ -36,6 +36,7 @@ arrayref = "0.3.6"
 bytemuck = "1.12.3"
 byteorder = "1.4.3"
 default-env = "0.1.1"
+ahash = "=0.8.6"
 
 [lib]
 crate-type = ["cdylib", "lib"]
