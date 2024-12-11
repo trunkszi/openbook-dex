@@ -305,7 +305,7 @@ impl MarketStateV2 {
         let account_data = market_account.try_borrow_data()?;
         check_assert!(account_data.len() >= 12)?;
         let head = array_ref![account_data, 0, 5];
-        let tail = array_ref![account_data, account_data.len() - 6, 7];
+        let tail = array_ref![account_data, account_data.len() - 7, 7];
         check_assert_eq!(head, ACCOUNT_HEAD_PADDING)?;
         check_assert_eq!(tail, ACCOUNT_TAIL_PADDING)?;
 
@@ -438,7 +438,7 @@ fn check_account_padding(data: &mut [u8]) -> DexResult<&mut [[u8; 8]]> {
 fn check_account_padding_checked(account_data: &[u8]) -> DexResult<&[[u8; 8]]> {
     check_assert!(account_data.len() >= 12)?;
     let head = array_ref![account_data, 0, 5];
-    let tail = array_ref![account_data, account_data.len() - 6, 7];
+    let tail = array_ref![account_data, account_data.len() - 7, 7];
     check_assert_eq!(head, ACCOUNT_HEAD_PADDING)?;
     check_assert_eq!(tail, ACCOUNT_TAIL_PADDING)?;
     let data = &account_data[5..account_data.len() - 7];
@@ -566,7 +566,7 @@ impl MarketState {
         let account_data = market_account.try_borrow_data()?;
         check_assert!(account_data.len() >= 12)?;
         let head = array_ref![account_data, 0, 5];
-        let tail = array_ref![account_data, account_data.len() - 6, 7];
+        let tail = array_ref![account_data, account_data.len() - 7, 7];
         check_assert_eq!(head, ACCOUNT_HEAD_PADDING)?;
         check_assert_eq!(tail, ACCOUNT_TAIL_PADDING)?;
 
@@ -801,7 +801,7 @@ impl OpenOrders {
         let account_data = orders_account.try_borrow_data()?;
         check_assert!(account_data.len() >= 12)?;
         let head = array_ref![account_data, 0, 5];
-        let tail = array_ref![account_data, account_data.len() - 6, 7];
+        let tail = array_ref![account_data, account_data.len() - 7, 7];
         check_assert_eq!(head, ACCOUNT_HEAD_PADDING)?;
         check_assert_eq!(tail, ACCOUNT_TAIL_PADDING)?;
 
