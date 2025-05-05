@@ -32,7 +32,7 @@ thiserror = "1.0.37"
 safe-transmute = "0.11.2"
 arbitrary = { version = "0.4.7", features = ["derive"], optional = true }
 num-traits = "0.2.15"
-arrayref = "0.3.8"
+arrayref = ">=0.3.7"
 bytemuck = "1.12.3"
 byteorder = "1.4.3"
 default-env = "0.1.1"
